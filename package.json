@@ -1,13 +1,16 @@
 {
   "name": "@matteo.collina/cocktail-control",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Control you cocktail robot",
   "main": "index.js",
   "scripts": {
     "lint": "standard",
     "test": "tape test.js"
   },
-  "precommit": ["lint", "test"],
+  "precommit": [
+    "lint",
+    "test"
+  ],
   "author": "Matteo Collina <hello@matteocollina.com>",
   "license": "MIT",
   "devDependencies": {
