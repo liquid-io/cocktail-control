@@ -1,0 +1,17 @@
+{
+  "name": "@matteo.collina/cocktail-control",
+  "version": "0.0.1",
+  "description": "Control you cocktail robot",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "author": "Matteo Collina <hello@matteocollina.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "tape": "^4.2.0"
+  },
+  "dependencies": {
+    "clone": "^1.0.2"
+  }
+}
