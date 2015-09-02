@@ -144,7 +144,7 @@ test('restore state', function (t) {
   }, {
     cocktail: 'bloody',
     name: 'Richard'
-  }],  function done () {
+  }], function done () {
 
     var robot = control(db, defs)
 
@@ -211,5 +211,4 @@ test('restore state', function (t) {
       robot.free('mark') // let says that mark is free
     })
   })
-
 })
