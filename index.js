@@ -111,10 +111,10 @@ function cocktailControl (db, defs) {
         key: JOBS + job.id
       }
     }), cb)
-    
+
     // splice the new exectuables from the jobs queue. :D
-    executables.forEach(function(executable){
-      jobs.splice(jobs.indexOf(executable), 1);
+    executables.forEach(function (executable) {
+      jobs.splice(jobs.indexOf(executable), 1)
     })
 
     if (executables.length > 0) {
