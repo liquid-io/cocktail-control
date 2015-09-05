@@ -16,6 +16,8 @@ function cocktailControl (db, defs) {
   var count = 0
   var deferred = []
 
+  that.queue = jobs
+
   var stream = db.createValueStream({
     gt: JOBS,
     lt: JOBS + '\xff',
@@ -76,7 +78,7 @@ function cocktailControl (db, defs) {
     }
 
     var cocktails = wrap.cocktails
-    var executable = []
+    var executables = []
 
     jobs.forEach(function (job) {
       var cocktail
@@ -87,7 +89,7 @@ function cocktailControl (db, defs) {
           continue
         }
 
-        var isTaken = executable.reduce(function (acc, job) {
+        var isTaken = executables.reduce(function (acc, job) {
           return acc || job.pump === i
         }, false)
 
@@ -97,26 +99,27 @@ function cocktailControl (db, defs) {
 
         job.activations = clone(defs.cocktails[job.cocktail].activations)
         job.pump = i
-        executable.push(job)
+        executables.push(job)
 
         break
       }
     })
 
-    db.batch(executable.map(function (job) {
+    db.batch(executables.map(function (job) {
       return {
         type: 'del',
         key: JOBS + job.id
       }
     }), cb)
-
-    jobs = jobs.filter(function (job) {
-      return executable.indexOf(job) < 0
+    
+    // splice the new exectuables from the jobs queue. :D
+    executables.forEach(function(executable){
+      jobs.splice(jobs.indexOf(executable), 1);
     })
 
-    if (executable.length > 0) {
+    if (executables.length > 0) {
       that.emit(worker, {
-        jobs: executable
+        jobs: executables
       })
     }
 
