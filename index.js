@@ -85,7 +85,7 @@ function cocktailControl (db, defs) {
       for (var i = 0; i < cocktails.length; i++) {
         cocktail = cocktails[i]
 
-        if (job.cocktail !== cocktail) {
+        if (job.cocktail !== cocktail.cocktail) {
           continue
         }
 

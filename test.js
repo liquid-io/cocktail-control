@@ -26,10 +26,10 @@ var defs = {
   cocktails: cocktails,
   workers: {
     bob: {
-      cocktails: ['bloody', 'spritz']
+      cocktails: [{cocktail: 'bloody', pump: 0}, {cocktail: 'spritz', pump: 1}]
     },
     mark: {
-      cocktails: ['spritz', 'spritz']
+      cocktails: [{cocktail: 'spritz', pump: 0}, {cocktail: 'spritz', pump: 1}]
     }
   }
 }
@@ -145,7 +145,6 @@ test('restore state', function (t) {
     cocktail: 'bloody',
     name: 'Richard'
   }], function done () {
-
     var robot = control(db, defs)
 
     robot.once('bob', function (cocktails) {
