@@ -26,7 +26,7 @@ var defs = {
   cocktails: cocktails,
   workers: {
     bob: {
-      cocktails: [{cocktail: 'bloody', pump: 0}, {cocktail: 'spritz', pump: 1}]
+      cocktails: [{cocktail: 'spritz', pump: 1}, {cocktail: 'bloody', pump: 0}]
     },
     mark: {
       cocktails: [{cocktail: 'spritz', pump: 0}, {cocktail: 'spritz', pump: 1}]

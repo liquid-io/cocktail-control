@@ -90,7 +90,7 @@ function cocktailControl (db, defs) {
         }
 
         var isTaken = executables.reduce(function (acc, job) {
-          return acc || job.pump === i
+          return acc || job.pump === cocktail.pump
         }, false)
 
         if (isTaken) {
@@ -98,7 +98,7 @@ function cocktailControl (db, defs) {
         }
 
         job.activations = clone(defs.cocktails[job.cocktail].activations)
-        job.pump = i
+        job.pump = cocktail.pump
         executables.push(job)
 
         break
